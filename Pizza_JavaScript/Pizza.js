@@ -9,9 +9,9 @@ function getReceipt()   {            //initializes string to get passed from fun
             text1 = text1+selectedSize+"<br>";
         }
     }
-    if (selectedSize === "Personal Pizza")  {
+    if (selectedSize === "Small Pizza")  {
         sizeTotal = 6;
-    } else if (selectedSize === "Small Pizza")  {
+    } else if (selectedSize === "Personal Pizza")  {  //for selected pizza
         sizeTotal = 8;
     } else if (selectedSize === "Medium Pizza")  {
         sizeTotal = 10;
@@ -23,14 +23,14 @@ function getReceipt()   {            //initializes string to get passed from fun
     runningTotal = sizeTotal;
     console.log(selectedSize+" = $"+sizeTotal+".00");
     console.log("size text1: "+text1);
-    console.log("subtotal: $"+runningTotal+".00");
+    console.log("subtotal: $"+runningTotal+".00"); //vars passed on to each func
     getTopping(runningTotal,text1);
 };
 
 function getTopping(runningTotal,text1) {
     var toppingTotal = 0;
     var selectedTopping = [];
-    var toppingArray = document.getElementsByClassName("toppings");
+    var toppingArray = document.getElementsByClassName("toppings");  //toppings func for meats and veg
     for (var j = 0; j < toppingArray.length; j++)  {
         if (toppingArray[j].checked)  {
             selectedTopping.push(toppingArray[j].value);
@@ -44,7 +44,7 @@ function getTopping(runningTotal,text1) {
     } else {
         toppingTotal = 0;
     }
-    runningTotal = (runningTotal + toppingTotal);
+    runningTotal = (runningTotal + toppingTotal);       //used to calc price of pizzas + toppings
     console.log("total selected topping items: "+toppingCount);
     console.log(toppingCount+" topping - 1 free topping = "+"$"+toppingTotal+".00");
     console.log("topping text1: "+text1);
